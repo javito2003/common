@@ -1,12 +1,12 @@
-import { NextFunction, Request, Response } from 'express';
-import { validationResult } from 'express-validator';
+import { NextFunction, Request, Response } from "express";
+import { validationResult } from "express-validator";
 
-import { RequestValidationsError } from '../errors/requestValidationsError';
+import { RequestValidationsError } from "../errors/requestValidationsError";
 
-const validateRequest = (
+export const validateRequest = (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ): void => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -15,5 +15,3 @@ const validateRequest = (
 
   next();
 };
-
-export default validateRequest;
